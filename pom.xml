@@ -19,6 +19,14 @@
 		</repository>
 	</distributionManagement>
 
+	<repositories>
+		<repository>
+			<id>repsy</id>
+			<name>My Private Maven Repository on Repsy</name>
+			<url>https://repo.repsy.io/mvn/levik/bring</url>
+		</repository>
+	</repositories>
+
 	<dependencies>
 		<dependency>
 			<groupId>com.bobocode.bring.web</groupId>
