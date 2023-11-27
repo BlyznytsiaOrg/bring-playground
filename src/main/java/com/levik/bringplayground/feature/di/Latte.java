@@ -1,6 +1,6 @@
-package com.bobocode.bringplayground.feature.di;
+package com.levik.bringplayground.feature.di;
 
-import com.bobocode.bring.core.anotation.Component;
+import com.bobocode.bring.core.annotation.Component;
 
 @Component
 public class Latte implements Drink {

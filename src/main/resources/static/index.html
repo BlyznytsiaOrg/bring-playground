@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TinyURL</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="mb-4">TinyURL Generator</h1>
+    <div class="input-group mb-3">
+        <input type="text" id="originalUrl" class="form-control" placeholder="Enter URL to shorten">
+        <div class="input-group-append">
+            <button class="btn btn-primary" id="shortenBtn">Shorten</button>
+        </div>
+    </div>
+    <div id="result" style="display: none;">
+        <p>Shortened URL:</p>
+        <input type="text" id="shortenedUrl" class="form-control mb-3" readonly>
+        <button class="btn btn-secondary" id="copyBtn">Copy to Clipboard</button>
+    </div>
+</div>
+
+<script src="/static/js/script.js"></script>
+</body>
+</html>
