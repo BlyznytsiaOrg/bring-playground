@@ -1,7 +1,6 @@
 document.getElementById('shortenBtn').addEventListener('click', function() {
     const originalUrl = document.getElementById('originalUrl').value;
 
-    // Make an AJAX POST request to the server
     fetch('/api/shorten', {
         method: 'POST',
         headers: {
@@ -10,12 +9,24 @@ document.getElementById('shortenBtn').addEventListener('click', function() {
         },
         body: JSON.stringify({ originalUrl })
     })
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById('shortenedUrl').value = data.shortenedUrl;
-            document.getElementById('result').style.display = 'block';
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
         })
-        .catch(error => console.error('Error:', error));
+        .then(data => {
+            if (data && data.shortenedUrl) {
+                document.getElementById('shortenedUrl').value = data.shortenedUrl;
+                document.getElementById('result').style.display = 'block';
+            } else {
+                throw new Error('Invalid response from the server');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('There was an error processing your request.');
+        });
 });
 
 document.getElementById('copyBtn').addEventListener('click', function() {

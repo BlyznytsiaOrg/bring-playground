@@ -2,15 +2,17 @@ package com.levik.bringplayground.feature.di;
 
 import com.bobocode.bring.core.annotation.Component;
 import com.bobocode.bring.core.annotation.ScheduledTask;
+import lombok.extern.slf4j.Slf4j;
 
 import java.time.LocalDateTime;
 import java.util.concurrent.TimeUnit;
 
-//@Component
+@Slf4j
+@Component
 public class MyScheduledTasks {
 
-    @ScheduledTask(value = "myTask", initialDelay = 1000, period = 5000, timeUnit = TimeUnit.MILLISECONDS)
+    @ScheduledTask(value = "myTask", initialDelay = 1, period = 20, timeUnit = TimeUnit.SECONDS)
     public void scheduledMethod1() {
-        System.out.println(Thread.currentThread().getName() + " scheduledMethod1 " + LocalDateTime.now());
+        log.info(Thread.currentThread().getName() + " scheduledMethod1 " + LocalDateTime.now());
     }
 }
