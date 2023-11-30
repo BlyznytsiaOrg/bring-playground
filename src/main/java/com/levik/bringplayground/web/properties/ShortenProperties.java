@@ -8,7 +8,6 @@ import lombok.Data;
 @Component
 public class ShortenProperties {
 
-
     @Value("shortenServerUrl")
     private String serverUrl;
 }

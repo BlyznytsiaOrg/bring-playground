@@ -1,9 +1,9 @@
 package com.levik.bringplayground.web.service;
 
+import com.bobocode.bring.core.annotation.Qualifier;
 import com.bobocode.bring.core.annotation.Service;
 import com.levik.bringplayground.web.exception.HashNotFoundException;
 import com.levik.bringplayground.web.properties.ShortenProperties;
-import com.levik.bringplayground.web.utils.GenerateHashUtils;
 
 import java.util.Map;
 import java.util.Objects;
@@ -16,7 +16,11 @@ public class ShortenService {
     private final Map<String, String> hashToLongUrl;
     private final ShortenProperties shortenProperties;
 
-    public ShortenService(ShortenProperties shortenProperties) {
+    private final HashGenerator hashGenerator;
+
+    public ShortenService(ShortenProperties shortenProperties,
+                          @Qualifier("md5HashGenerator") HashGenerator hashGenerator) {
+        this.hashGenerator = hashGenerator;
         this.longUrlToShortKey = new ConcurrentHashMap<>();
         this.hashToLongUrl = new ConcurrentHashMap<>();
         this.shortenProperties = shortenProperties;
@@ -31,7 +35,7 @@ public class ShortenService {
             return shortenProperties.getServerUrl() + hash;
         }
 
-        String hash = GenerateHashUtils.generateHash(longUrl);
+        String hash = hashGenerator.generateHash(longUrl);
         hashToLongUrl.put(hash, longUrl);
         return shortenProperties.getServerUrl() + hash;
     }

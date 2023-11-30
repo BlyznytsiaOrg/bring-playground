@@ -10,7 +10,6 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 @Component
 public class MyScheduledTasks {
-
     @ScheduledTask(value = "myTask", initialDelay = 1, period = 20, timeUnit = TimeUnit.SECONDS)
     public void scheduledMethod1() {
         log.info(Thread.currentThread().getName() + " scheduledMethod1 " + LocalDateTime.now());
