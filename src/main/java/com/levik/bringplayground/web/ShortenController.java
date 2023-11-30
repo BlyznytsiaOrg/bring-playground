@@ -28,7 +28,7 @@ public class ShortenController implements BringServlet {
 
     @SneakyThrows
     @GetMapping(path = "/short/{hash}")
-    public ResponseEntity<?> getLongUrl(@PathVariable String hash) {
+    public ResponseEntity<Void> getLongUrl(@PathVariable String hash) {
         String longUrl = shortenService.resolveHash(hash);
 
         var httpHeaders = new HttpHeaders();
