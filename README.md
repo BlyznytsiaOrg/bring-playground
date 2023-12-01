@@ -4,6 +4,8 @@
 
 Demo features:
  - List injection
+ - PostConstruct
+ - SingletonBean and PrototypeBean
  - Properties injection via Value
  - ScheduledTask
  - Configuration (Bean), Service annotation usage
@@ -14,6 +16,7 @@ Demo features:
  - Static Content Serving
  - Exception handler
  - Actuator
+ - Banner
 
 Please take into account that this is not a full supported features it is just for demo set. 
 If you need more please take to look into example of repo [bring](https://github.com/YevgenDemoTestOrganization/bring).
@@ -32,7 +35,7 @@ and run the
 com.levik.bringplayground.BringPlaygroundApplication
 ```  
 
-## Lets fo feature by feature
+## Let's go feature by feature
 
 - List Injection Overview
 
@@ -62,6 +65,64 @@ See the result of the logs:
 
 ```
 [INFO ] 23-12-01 14:43:39.838 [main] c.l.b.BringPlaygroundApplication - bring - Barista is Barista is preparing a drink: Brewing a strong espresso!, Making a delicious latte!
+```
+
+- PostConstruct
+
+```java
+
+    @PostConstruct
+    public void onInit() {
+        log.info("PostContract demo!!!");
+    }
+```
+
+- SingletonBean and PrototypeBean
+
+```java
+
+import com.bobocode.bring.core.annotation.Component;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@AllArgsConstructor
+@Component
+public class SingletonBean {
+
+    @Getter
+    private final PrototypeBean prototypeBean;
+
+}
+
+import com.bobocode.bring.core.annotation.Scope;
+import com.bobocode.bring.core.annotation.Service;
+import com.bobocode.bring.core.domain.BeanScope;
+import com.bobocode.bring.core.domain.ProxyMode;
+
+@Service
+@Scope(name = BeanScope.PROTOTYPE, proxyMode = ProxyMode.ON)
+public class PrototypeBean {
+}
+
+
+  private final SingletonBean singletonBean;
+  @ScheduledTask(value = "myTask", initialDelay = 1, period = 20, timeUnit = TimeUnit.SECONDS)
+  public void scheduledMethod1() {
+    log.info(Thread.currentThread().getName() + " scheduledMethod1 " + LocalDateTime.now());
+
+    log.info("singletonBean -> " + singletonBean + " PrototypeBean ->" + singletonBean.getPrototypeBean());
+  }
+}
+
+```
+
+and from logs we could see that Prototype Bean has different identity
+
+```
+[INFO ] 23-12-01 20:41:11.969 [pool-1-thread-1] c.l.b.feature.di.MyScheduledTasks - bring - pool-1-thread-1 scheduledMethod1 2023-12-01T20:41:11.969047
+[INFO ] 23-12-01 20:41:11.969 [pool-1-thread-1] c.l.b.feature.di.MyScheduledTasks - bring - singletonBean -> com.levik.bringplayground.feature.di.SingletonBean@365695eb PrototypeBean ->com.levik.bringplayground.feature.di.PrototypeBean@1dcd751f
+[INFO ] 23-12-01 20:41:31.974 [pool-1-thread-1] c.l.b.feature.di.MyScheduledTasks - bring - pool-1-thread-1 scheduledMethod1 2023-12-01T20:41:31.974337
+[INFO ] 23-12-01 20:41:31.975 [pool-1-thread-1] c.l.b.feature.di.MyScheduledTasks - bring - singletonBean -> com.levik.bringplayground.feature.di.SingletonBean@365695eb PrototypeBean ->com.levik.bringplayground.feature.di.PrototypeBean@740d3425
 ```
 
 - Properties injection via Value
@@ -244,6 +305,23 @@ facilitated through a dedicated API.
         LogLevelChangerUtils.changeLogLevel(packageName, newLevel);
     }
 ```
+
+- The last one Banner
+
+
+  if you want you could use the default one add your own or disable it. 
+  Let's try with new one:
+ - add banner.txt to resources
+ - add VM options add bring.main.banner.file
+
+<img width="1272" alt="image" src="https://github.com/YevgenDemoTestOrganization/bring/assets/73576438/87af8f33-00d5-43a8-9872-2de678598b77">
+
+logs from application:
+
+<img width="1688" alt="image" src="https://github.com/YevgenDemoTestOrganization/bring/assets/73576438/2c231fa9-ed34-4aca-8d1f-98c54d94431b">
+
+
+
 
 In addition, Bring support many more features:
 - [Core](https://github.com/YevgenDemoTestOrganization/bring/blob/main/features/Core.md)
