@@ -10,7 +10,6 @@ import com.levik.bringplayground.web.dto.UserResponse;
 import com.levik.bringplayground.web.service.ShortenService;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
-import lombok.var;
 
 @AllArgsConstructor
 @RestController
@@ -31,7 +30,7 @@ public class ShortenController implements BringServlet {
     public ResponseEntity<Void> getLongUrl(@PathVariable String hash) {
         String longUrl = shortenService.resolveHash(hash);
 
-        var httpHeaders = new HttpHeaders();
+        HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.set(LOCATION, longUrl);
 
         return new ResponseEntity<>(httpHeaders, HttpStatus.MOVED_PERMANENTLY);
