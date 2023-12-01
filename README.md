@@ -321,9 +321,7 @@ logs from application:
 <img width="1688" alt="image" src="https://github.com/YevgenDemoTestOrganization/bring/assets/73576438/2c231fa9-ed34-4aca-8d1f-98c54d94431b">
 
 
-
-
-In addition, Bring support many more features:
+Furthermore, Bring accommodates a plethora of additional features.:
 - [Core](https://github.com/YevgenDemoTestOrganization/bring/blob/main/features/Core.md)
 - [Web](https://github.com/YevgenDemoTestOrganization/bring/blob/main/features/Web.md)
 
