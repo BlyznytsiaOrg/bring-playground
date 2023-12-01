@@ -9,8 +9,6 @@ import java.util.stream.Collectors;
 @Service
 public class Barista {
     private final List<Drink> drinks;
-
-    @Autowired
     public Barista(List<Drink> drinks) {
         this.drinks = drinks;
     }
