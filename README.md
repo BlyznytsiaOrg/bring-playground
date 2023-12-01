@@ -205,8 +205,26 @@ With Bring, you can automate this process using out of the box, allowing for sea
 
 ![Bring DI diagram](https://github.com/YevgenDemoTestOrganization/bring/assets/73576438/289a774e-dce4-4057-8506-ecaefb2a2ec3)
 
+UI
+
+<img width="1434" alt="image" src="https://github.com/YevgenDemoTestOrganization/bring/assets/73576438/4f8e9696-9b63-4ff6-a890-0bfa5edad3d6">
+
 - Exception handler
   ![Bring DI diagram](https://github.com/YevgenDemoTestOrganization/bring/assets/73576438/f18327da-bfb3-4e73-b93e-3208229462e8)
+
+  - Custom exception
+```java
+import com.bobocode.bring.web.servlet.annotation.ResponseStatus;
+
+@ResponseStatus(value = HttpStatus.NOT_FOUND)
+public class HashNotFoundException extends RuntimeException {
+
+    public HashNotFoundException(String message) {
+        super(message);
+    }
+}
+```
+
 
 - Actuator
 
