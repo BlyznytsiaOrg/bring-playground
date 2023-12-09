@@ -40,8 +40,8 @@ com.levik.bringplayground.BringPlaygroundApplication
 - List Injection Overview
 
 ```java
-import com.bobocode.bring.core.annotation.Autowired;
-import com.bobocode.bring.core.annotation.Service;
+import io.github.blyznytsiaorg.bring.core.annotation.Autowired;
+import io.github.blyznytsiaorg.bring.core.annotation.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -81,7 +81,7 @@ See the result of the logs:
 
 ```java
 
-import com.bobocode.bring.core.annotation.Component;
+import io.github.blyznytsiaorg.bring.core.annotation.Component;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -94,10 +94,10 @@ public class SingletonBean {
 
 }
 
-import com.bobocode.bring.core.annotation.Scope;
-import com.bobocode.bring.core.annotation.Service;
-import com.bobocode.bring.core.domain.BeanScope;
-import com.bobocode.bring.core.domain.ProxyMode;
+import io.github.blyznytsiaorg.bring.core.annotation.Scope;
+import io.github.blyznytsiaorg.bring.core.annotation.Service;
+import io.github.blyznytsiaorg.bring.core.domain.BeanScope;
+import io.github.blyznytsiaorg.bring.core.domain.ProxyMode;
 
 @Service
 @Scope(name = BeanScope.PROTOTYPE, proxyMode = ProxyMode.ON)
@@ -132,8 +132,8 @@ We have default values that come to start the tomcat for instance server.port et
 But else you could create you class to consumer you properties for instance ShortenProperties it has serverUrl
 
 ```java
-import com.bobocode.bring.core.annotation.Component;
-import com.bobocode.bring.core.annotation.Value;
+import io.github.blyznytsiaorg.bring.core.annotation.Component;
+import io.github.blyznytsiaorg.bring.core.annotation.Value;
 import lombok.Data;
 
 @Data
@@ -158,8 +158,8 @@ This code defines a class MyScheduledTasks that contains a method scheduledMetho
 This method is set to run periodically with a specific initial delay and time period. 
 When executed, it logs information using the logger just for demo purpose.
 ```java
-import com.bobocode.bring.core.annotation.Component;
-import com.bobocode.bring.core.annotation.ScheduledTask;
+import io.github.blyznytsiaorg.bring.core.annotation.Component;
+import io.github.blyznytsiaorg.bring.core.annotation.ScheduledTask;
 import lombok.extern.slf4j.Slf4j;
 
 import java.time.LocalDateTime;
@@ -189,7 +189,7 @@ enabling them to be recognized as Bring-managed components automatically. Additi
 annotate it with @Configuration, and employ the @Bean annotation on its methods.
 
 ```java
-import com.bobocode.bring.core.annotation.Service;
+import io.github.blyznytsiaorg.bring.core.annotation.Service;
 
 
 @Service
@@ -200,8 +200,8 @@ public class Md5HashGenerator implements HashGenerator {
 
 
 ```java
-import com.bobocode.bring.core.annotation.Bean;
-import com.bobocode.bring.core.annotation.Configuration;
+import io.github.blyznytsiaorg.bring.core.annotation.Bean;
+import io.github.blyznytsiaorg.bring.core.annotation.Configuration;
 
 @Configuration
 public class MyConfiguration {
@@ -275,7 +275,7 @@ UI
 
   - Custom exception
 ```java
-import com.bobocode.bring.web.servlet.annotation.ResponseStatus;
+import io.github.blyznytsiaorg.bring.web.servlet.annotation.ResponseStatus;
 
 @ResponseStatus(value = HttpStatus.NOT_FOUND)
 public class HashNotFoundException extends RuntimeException {
