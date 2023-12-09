@@ -26,7 +26,7 @@ If you need more please take to look into example of repo [bring](https://github
 To run the `bring Playground` application:
 
 ```bash
-   git clone https://github.com/YevgenDemoTestOrganization/bring-playground.git
+   git clone https://github.com/BlyznytsiaOrg/bring-playground.git
 ```  
 
 and run the 
