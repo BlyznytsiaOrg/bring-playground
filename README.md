@@ -19,7 +19,7 @@ Demo features:
  - Banner
 
 Please take into account that this is not a full supported features it is just for demo set. 
-If you need more please take to look into example of repo [bring](https://github.com/YevgenDemoTestOrganization/bring).
+If you need more please take to look into example of repo [bring](https://github.com/BlyznytsiaOrg/bring).
 
 ## Usage
 
