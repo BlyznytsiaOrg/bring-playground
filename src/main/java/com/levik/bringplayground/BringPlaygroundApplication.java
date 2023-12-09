@@ -1,7 +1,7 @@
 package com.levik.bringplayground;
 
-import com.bobocode.bring.core.context.impl.BringApplicationContext;
-import com.bobocode.bring.web.BringWebApplication;
+import io.github.blyznytsiaorg.bring.core.context.impl.BringApplicationContext;
+import io.github.blyznytsiaorg.bring.web.BringWebApplication;
 import com.levik.bringplayground.feature.di.Barista;
 import lombok.extern.slf4j.Slf4j;
 

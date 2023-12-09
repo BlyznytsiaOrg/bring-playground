@@ -1,6 +1,6 @@
 package com.levik.bringplayground.web.service;
 
-import com.bobocode.bring.core.annotation.Service;
+import io.github.blyznytsiaorg.bring.core.annotation.Service;
 import lombok.SneakyThrows;
 
 import java.math.BigInteger;

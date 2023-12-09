@@ -1,6 +1,6 @@
 package com.levik.bringplayground.feature.di;
 
-import com.bobocode.bring.core.annotation.Component;
+import io.github.blyznytsiaorg.bring.core.annotation.Component;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

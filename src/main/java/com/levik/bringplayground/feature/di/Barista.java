@@ -1,8 +1,7 @@
 package com.levik.bringplayground.feature.di;
 
-import com.bobocode.bring.core.annotation.Autowired;
-import com.bobocode.bring.core.annotation.PostConstruct;
-import com.bobocode.bring.core.annotation.Service;
+import io.github.blyznytsiaorg.bring.core.annotation.PostConstruct;
+import io.github.blyznytsiaorg.bring.core.annotation.Service;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
